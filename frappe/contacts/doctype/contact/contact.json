@@ -15,6 +15,8 @@
   "email_id",
   "user",
   "address",
+  "nominne",
+  "nominee_portion",
   "sync_with_google_contacts",
   "cb00",
   "status",
@@ -24,6 +26,9 @@
   "phone",
   "mobile_no",
   "company_name",
+  "age",
+  "nic",
+  "linked_with",
   "image",
   "sb_00",
   "google_contacts",
@@ -34,8 +39,8 @@
   "email_ids",
   "phone_nos",
   "contact_details",
-  "links",
   "is_primary_contact",
+  "links",
   "more_info",
   "department",
   "unsubscribed"
@@ -243,14 +248,55 @@
    "fieldname": "company_name",
    "fieldtype": "Data",
    "label": "Company Name"
+  },
+  {
+   "default": "0",
+   "fieldname": "nominne",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Nominne"
+  },
+  {
+   "depends_on": "eval:doc.nominne",
+   "fieldname": "nominee_portion",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Nominee Portion",
+   "length": 3,
+   "non_negative": 1
+  },
+  {
+   "fieldname": "nic",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "NIC",
+   "length": 12,
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "linked_with",
+   "fieldtype": "Link",
+   "label": "Linked With(Member ID)",
+   "options": "Member",
+   "read_only": 1
+  },
+  {
+   "fieldname": "age",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Age"
   }
  ],
  "icon": "fa fa-user",
  "idx": 1,
  "image_field": "image",
- "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2020-08-27 14:12:09.906719",
+ "modified": "2021-06-02 14:42:49.067955",
  "modified_by": "Administrator",
  "module": "Contacts",
  "name": "Contact",

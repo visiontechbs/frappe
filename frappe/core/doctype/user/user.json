@@ -7,38 +7,40 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "sb0_5",
   "enabled",
   "section_break_3",
   "email",
-  "last_name",
-  "language",
-  "column_break0",
   "first_name",
-  "full_name",
-  "time_zone",
-  "column_break_11",
   "middle_name",
-  "username",
+  "last_name",
+  "full_name",
   "send_welcome_email",
   "unsubscribed",
+  "column_break0",
+  "username",
+  "language",
+  "time_zone",
+  "employee",
+  "employee_code",
   "user_image",
+  "sb_9",
+  "location",
+  "petty_cash_credit_limit",
   "sb1",
   "role_profile_name",
   "roles_html",
   "roles",
   "short_bio",
   "gender",
-  "birth_date",
-  "interest",
-  "banner_image",
-  "desk_theme",
-  "column_break_26",
   "phone",
-  "location",
+  "mobile_no",
+  "birth_date",
+  "banner_image",
+  "column_break_22",
+  "interest",
   "bio",
   "mute_sounds",
-  "column_break_22",
-  "mobile_no",
   "change_password",
   "new_password",
   "logout_all_sessions",
@@ -49,10 +51,10 @@
   "document_follow_notify",
   "document_follow_frequency",
   "email_settings",
-  "email_signature",
   "thread_notify",
   "send_me_a_copy",
   "allowed_in_mentions",
+  "email_signature",
   "user_emails",
   "sb_allow_modules",
   "module_profile",
@@ -63,16 +65,15 @@
   "defaults",
   "sb3",
   "simultaneous_sessions",
-  "restrict_ip",
-  "last_ip",
-  "column_break1",
-  "login_after",
   "user_type",
-  "last_active",
-  "section_break_63",
+  "login_after",
   "login_before",
+  "restrict_ip",
   "bypass_restrict_ip_check_if_2fa_enabled",
+  "column_break1",
   "last_login",
+  "last_ip",
+  "last_active",
   "last_known_versions",
   "third_party_authentication",
   "social_logins",
@@ -83,6 +84,10 @@
   "api_secret"
  ],
  "fields": [
+  {
+   "fieldname": "sb0_5",
+   "fieldtype": "Section Break"
+  },
   {
    "default": "1",
    "fieldname": "enabled",
@@ -95,8 +100,7 @@
   {
    "depends_on": "enabled",
    "fieldname": "section_break_3",
-   "fieldtype": "Section Break",
-   "label": "Basic Info"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "email",
@@ -191,7 +195,7 @@
    "print_hide": 1
   },
   {
-   "depends_on": "eval:in_list(['System User', 'Website User'], doc.user_type) && doc.enabled == 1",
+   "depends_on": "enabled",
    "fieldname": "sb1",
    "fieldtype": "Section Break",
    "label": "Roles",
@@ -258,9 +262,12 @@
   },
   {
    "fieldname": "location",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
    "label": "Location",
-   "no_copy": 1
+   "no_copy": 1,
+   "options": "Location"
   },
   {
    "fieldname": "banner_image",
@@ -302,7 +309,7 @@
    "no_copy": 1
   },
   {
-   "default": "1",
+   "default": "0",
    "fieldname": "logout_all_sessions",
    "fieldtype": "Check",
    "label": "Logout From All Devices After Changing Password"
@@ -391,7 +398,6 @@
   },
   {
    "collapsible": 1,
-   "depends_on": "eval:in_list(['System User'], doc.user_type)",
    "fieldname": "sb_allow_modules",
    "fieldtype": "Section Break",
    "label": "Allow Modules",
@@ -454,18 +460,18 @@
    "label": "Simultaneous Sessions"
   },
   {
-   "bold": 1,
    "default": "System User",
    "description": "If the user has any role checked, then the user becomes a \"System User\". \"System User\" has access to the desktop",
    "fieldname": "user_type",
-   "fieldtype": "Link",
+   "fieldtype": "Select",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "User Type",
    "oldfieldname": "user_type",
    "oldfieldtype": "Select",
-   "options": "User Type",
-   "permlevel": 1
+   "options": "System User\nWebsite User",
+   "permlevel": 1,
+   "read_only": 1
   },
   {
    "description": "Allow user to login only after this hour (0-24)",
@@ -580,28 +586,38 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_11",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "column_break_26",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_63",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "desk_theme",
-   "fieldtype": "Select",
-   "label": "Desk Theme",
-   "options": "Light\nDark"
-  },
-  {
    "fieldname": "module_profile",
    "fieldtype": "Link",
    "label": "Module Profile",
    "options": "Module Profile"
+  },
+  {
+   "fieldname": "sb_9",
+   "fieldtype": "Section Break",
+   "in_preview": 1,
+   "label": "Petty Cash Request Details"
+  },
+  {
+   "fetch_from": "location.petty_cash_credit_limit",
+   "fieldname": "petty_cash_credit_limit",
+   "fieldtype": "Read Only",
+   "label": "Petty Cash Credit Limit",
+   "options": " "
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Employee Code",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_code",
+   "fieldtype": "Data",
+   "in_preview": 1,
+   "label": "Employee "
   }
  ],
  "icon": "fa fa-user",
@@ -650,6 +666,11 @@
   },
   {
    "group": "Settings",
+   "link_doctype": "Assignment Rule",
+   "link_fieldname": "users"
+  },
+  {
+   "group": "Settings",
    "link_doctype": "Document Follow",
    "link_fieldname": "user"
   },
@@ -670,7 +691,7 @@
   }
  ],
  "max_attachments": 5,
- "modified": "2021-02-02 16:11:06.037543",
+ "modified": "2021-06-22 16:25:20.321469",
  "modified_by": "Administrator",
  "module": "Core",
  "name": "User",
@@ -698,7 +719,6 @@
   }
  ],
  "quick_entry": 1,
- "route": "user",
  "search_fields": "full_name",
  "show_name_in_global_search": 1,
  "sort_field": "modified",

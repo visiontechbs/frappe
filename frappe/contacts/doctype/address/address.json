@@ -21,6 +21,9 @@
   "email_id",
   "phone",
   "fax",
+  "birth_date",
+  "department",
+  "digital_sign",
   "is_primary_address",
   "is_shipping_address",
   "disabled",
@@ -143,12 +146,38 @@
    "fieldtype": "Table",
    "label": "Links",
    "options": "Dynamic Link"
+  },
+  {
+   "fieldname": "birth_date",
+   "fieldtype": "Date",
+   "in_preview": 1,
+   "label": "Birth Of Date"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "department",
+   "fieldtype": "Select",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Department",
+   "options": "CEB\nRDA\nEducation Department",
+   "reqd": 1
+  },
+  {
+   "fieldname": "digital_sign",
+   "fieldtype": "Attach Image",
+   "in_global_search": 1,
+   "in_preview": 1,
+   "label": "Digital Signature",
+   "set_only_once": 1
   }
  ],
  "icon": "fa fa-map-marker",
  "idx": 5,
  "links": [],
- "modified": "2020-10-21 16:14:37.284830",
+ "modified": "2021-04-09 09:26:23.866438",
  "modified_by": "Administrator",
  "module": "Contacts",
  "name": "Address",
