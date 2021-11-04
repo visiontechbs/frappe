@@ -256,3 +256,18 @@ def get_contact_with_phone_number(number):
 def get_contact_name(email_id):
 	contact = frappe.get_list("Contact Email", filters={"email_id": email_id}, fields=["parent"], limit=1)
 	return contact[0].parent if contact else None
+
+@frappe.whitelist()
+def get_all_nominees(link_doctype,link_name):
+	res = frappe.db.sql("""
+			SELECT t2.link_name , SUM(t2.nominee_percentage) as nominee_percentage
+			FROM `tabContact` t1 INNER JOIN `tabDynamic Link` t2
+			ON t2.parent=t1.name
+		    WHERE  t2.link_doctype =  %(link_doctype)s
+				AND t2.link_name = %(link_name)s
+		""", {
+			'link_doctype': link_doctype,
+			'link_name': link_name,
+		}, as_dict=True)
+
+	return res

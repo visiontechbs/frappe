@@ -1,0 +1,72 @@
+{
+ "actions": [],
+ "creation": "2021-04-06 17:31:21.770654",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "guarantor_rname",
+  "address",
+  "telephone",
+  "nic",
+  "contact_httml"
+ ],
+ "fields": [
+  {
+   "fieldname": "guarantor_rname",
+   "fieldtype": "Data",
+   "label": "Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address"
+  },
+  {
+   "fieldname": "telephone",
+   "fieldtype": "Int",
+   "label": "Tel"
+  },
+  {
+   "fieldname": "nic",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "NIC",
+   "length": 9,
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "contact_httml",
+   "fieldtype": "HTML",
+   "label": "Link"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-04-07 09:00:45.333026",
+ "modified_by": "Administrator",
+ "module": "Custom",
+ "name": "Loan Guarantor",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

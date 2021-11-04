@@ -21,7 +21,12 @@
   "username",
   "language",
   "time_zone",
+  "employee",
+  "employee_code",
   "user_image",
+  "sb_9",
+  "location",
+  "petty_cash_credit_limit",
   "sb1",
   "role_profile_name",
   "roles_html",
@@ -31,7 +36,6 @@
   "phone",
   "mobile_no",
   "birth_date",
-  "location",
   "banner_image",
   "column_break_22",
   "interest",
@@ -258,9 +262,12 @@
   },
   {
    "fieldname": "location",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
    "label": "Location",
-   "no_copy": 1
+   "no_copy": 1,
+   "options": "Location"
   },
   {
    "fieldname": "banner_image",
@@ -583,6 +590,34 @@
    "fieldtype": "Link",
    "label": "Module Profile",
    "options": "Module Profile"
+  },
+  {
+   "fieldname": "sb_9",
+   "fieldtype": "Section Break",
+   "in_preview": 1,
+   "label": "Petty Cash Request Details"
+  },
+  {
+   "fetch_from": "location.petty_cash_credit_limit",
+   "fieldname": "petty_cash_credit_limit",
+   "fieldtype": "Read Only",
+   "label": "Petty Cash Credit Limit",
+   "options": " "
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Employee Code",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_code",
+   "fieldtype": "Data",
+   "in_preview": 1,
+   "label": "Employee "
   }
  ],
  "icon": "fa fa-user",
@@ -632,7 +667,7 @@
   {
    "group": "Settings",
    "link_doctype": "Assignment Rule",
-   "link_fieldname": "user"
+   "link_fieldname": "users"
   },
   {
    "group": "Settings",
@@ -656,7 +691,7 @@
   }
  ],
  "max_attachments": 5,
- "modified": "2020-10-18 15:18:53.126800",
+ "modified": "2021-08-06 13:13:41.725789",
  "modified_by": "Administrator",
  "module": "Core",
  "name": "User",
